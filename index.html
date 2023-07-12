@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="styles.css" rel="stylesheet"/>
+    <title>Суки, помогите!</title>
+</head>
+<body>
+    <p id="main-text">Суки, помогите!</p>
+
+    <script>
+        function rnd(from, to) {
+            return Math.round(Math.random() * (to - from) + from);
+        }
+
+        const phrases = [
+            'ПОМОГИТЕ, СУКИ, ПОМОГИТЕ',
+        ];
+
+        const fonts = [
+            'Arial, sans-serif',
+            'Verdana, sans-serif',
+            'Tahoma, sans-serif',
+            '\'Trebuchet MS\', sans-serif',
+            '\'Times New Roman\', serif',
+            'Georgia, serif',
+            'Garamond, serif',
+            '\'Courier New\', monospace',
+        ];
+
+        const mainTextEl = document.querySelector('#main-text');
+
+        mainTextEl.innerHTML = phrases[rnd(0, phrases.length - 1)];
+        // mainTextEl.style['font-family'] = 'Arial, sans-serif';
+        const qwe = rnd(0, fonts.length - 1);
+        const font = fonts[qwe];
+        mainTextEl.style['font-family'] = font;
+        console.log(font, qwe);
+        mainTextEl.style['font-weight'] = rnd(100, 900);
+    </script>
+</body>
+</html>
