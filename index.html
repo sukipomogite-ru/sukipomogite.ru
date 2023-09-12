@@ -31,13 +31,17 @@
 
         const mainTextEl = document.querySelector('#main-text');
 
-        mainTextEl.innerHTML = phrases[rnd(0, phrases.length - 1)];
-        // mainTextEl.style['font-family'] = 'Arial, sans-serif';
-        const qwe = rnd(0, fonts.length - 1);
-        const font = fonts[qwe];
-        mainTextEl.style['font-family'] = font;
-        console.log(font, qwe);
-        mainTextEl.style['font-weight'] = rnd(100, 900);
+        function rollPhrase() {
+            mainTextEl.innerHTML = phrases[rnd(0, phrases.length - 1)];
+            const qwe = rnd(0, fonts.length - 1);
+            const font = fonts[qwe];
+            mainTextEl.style['font-family'] = font;
+            console.log(font, qwe);
+            mainTextEl.style['font-weight'] = rnd(100, 900);
+        }
+
+        mainTextEl.addEventListener('click', () => rollPhrase());
+        rollPhrase();
     </script>
 </body>
 </html>
