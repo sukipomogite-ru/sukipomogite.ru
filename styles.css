@@ -13,4 +13,5 @@ body {
     font-size: xx-large;
     text-align: center;
     cursor: pointer;
+    user-select: none;
 }
