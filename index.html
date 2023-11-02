@@ -1,9 +1,9 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="styles.css" rel="stylesheet"/>
     <title>Суки, помогите!</title>
 
     <style>
@@ -24,10 +24,57 @@
             cursor: pointer;
             user-select: none;
         }
+
+        #video-player {
+            cursor:pointer
+        }
+
+        #video-player::-webkit-media-controls-panel {
+            display: none !important;
+            opacity: 1 !important;
+        }
+
+        .abs-top-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+
+        .abs-top-left {
+            position: absolute;
+            top: 0;
+            left: 0;
+        }
+        .abs-top-right {
+            position: absolute;
+            top: 0;
+            right: 0;
+        }
+        .abs-bottom-left {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+        }
+        .abs-bottom-right {
+            position: absolute;
+            bottom: 0;
+            right: 0;
+        }
     </style>
 </head>
+
 <body>
     <p id="main-text">Суки, помогите!</p>
+    <video
+        width="100"
+        height="100"
+        id="video-player"
+        controls
+        controlsList="nofullscreen"
+        onloadstart="this.volume=0.25"
+    >
+        <source src="media/video.mp4" type="video/mp4">
+    </video>
 
     <script>
         function rnd(from, to) {
@@ -50,6 +97,7 @@
         ];
 
         const mainTextEl = document.querySelector('#main-text');
+        const videoEl = document.querySelector('#video-player');
 
         function rollPhrase() {
             mainTextEl.innerHTML = phrases[rnd(0, phrases.length - 1)];
@@ -62,6 +110,28 @@
 
         mainTextEl.addEventListener('click', () => rollPhrase());
         rollPhrase();
+
+        function rollVideoPos() {
+            videoEl.classList.remove(...videoEl.classList.values());
+            videoEl.classList.add([
+                'abs-top-left',
+                'abs-top-right',
+                'abs-bottom-left',
+                'abs-bottom-right',
+            ][rnd(0, 3)]);
+        }
+
+        videoEl.addEventListener('click', ({target}) => {
+            if (target.paused) {
+                target.play();
+            } else {
+                target.pause();
+            }
+
+            rollVideoPos();
+        });
+        rollVideoPos();
     </script>
 </body>
+
 </html>
