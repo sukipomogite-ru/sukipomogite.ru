@@ -34,29 +34,29 @@
             opacity: 1 !important;
         }
 
-        .abs-top-left {
-            position: absolute;
+        .fix-top-left {
+            position: fixed;
             top: 0;
             left: 0;
         }
 
-        .abs-top-left {
-            position: absolute;
+        .fix-top-left {
+            position: fixed;
             top: 0;
             left: 0;
         }
-        .abs-top-right {
-            position: absolute;
+        .fix-top-right {
+            position: fixed;
             top: 0;
             right: 0;
         }
-        .abs-bottom-left {
-            position: absolute;
+        .fix-bottom-left {
+            position: fixed;
             bottom: 0;
             left: 0;
         }
-        .abs-bottom-right {
-            position: absolute;
+        .fix-bottom-right {
+            position: fixed;
             bottom: 0;
             right: 0;
         }
@@ -69,9 +69,8 @@
         width="100"
         height="100"
         id="video-player"
-        controls
-        controlsList="nofullscreen"
         onloadstart="this.volume=0.25"
+        poster="media/video-preview.png"
     >
         <source src="media/video.mp4" type="video/mp4">
     </video>
@@ -114,10 +113,10 @@
         function rollVideoPos() {
             videoEl.classList.remove(...videoEl.classList.values());
             videoEl.classList.add([
-                'abs-top-left',
-                'abs-top-right',
-                'abs-bottom-left',
-                'abs-bottom-right',
+                'fix-top-left',
+                'fix-top-right',
+                'fix-bottom-left',
+                'fix-bottom-right',
             ][rnd(0, 3)]);
         }
 
